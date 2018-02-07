@@ -7,10 +7,13 @@
 
 Invoice::Invoice(std::string id, int customerID, std::string name, double discount) {
     this->id = id;
-
+    this->id = customerID;
+    customer->getName() = name;
+    customer->setDiscount(discount);
 }
 Invoice::Invoice(std::string id, Customer* customer){
-
+    this->id = id;
+    this->customer = customer;
 }
 std::string Invoice::getID(){
     return id;
@@ -25,17 +28,23 @@ double Invoice::getAmount(){
     return amount;
 }
 double Invoice::getAmountAfterDiscount(){
-    return amount - discount;
+    return amount - (amount * customer->getDiscount());
 }
 void Invoice::recaulculateAmount(){
     this->amount = amount;
 }
 std::string Invoice::getCustomerName(){
-    return name;
+    return customer->getName();
 }
 bool Invoice::addItem(std::string id, std::string description, int quantity, double unitPrice) {
-    if (addItem(id, description, quantity, unitPrice)== true) {
+    if () {
         recaulculateAmount();
+        this->id = id;
+        item->setDescription(description);
+        item->setQuantity(quantity);
+        item->setUnitPrice(unitPrice);
+
+        return true;
     }else{
         return false;
     }
@@ -64,11 +73,11 @@ bool Invoice::removeItem(InvoiceItem item){
 }
 void Invoice::updateItem(std::string id, std::string description){
     this->id = id;
-    this->description = description;
+    item->setDescription(description);
 }
 void Invoice::updateItem(std::string id, int quantity){
     this->id = id;
-    this->quantity = quantity;
+    item->setQuantity(quantity);
     recaulculateAmount();
 }
 bool Invoice::updateItem(std::string id, double unitPrice){
@@ -87,7 +96,7 @@ bool Invoice::updateItem(InvoiceItem item){
     }
 }
 std::string Invoice::toString(){
-    return "Invoice[id= " + id + ",customer id = " + "" + "customer name=" + name +
+    return "Invoice[id= " + id + ",customer id = " + "" + "customer name=" + customer->getName();
 }
 bool Invoice::findItem (std::string id){
     if(){ ;

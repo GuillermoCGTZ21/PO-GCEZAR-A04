@@ -16,7 +16,7 @@ private:
     std::string id;
     Customer*customer;
     double amount = 0;
-    InvoiceItem item [0];
+    InvoiceItem item [100] = {0};
     bool findItem (std::string id);
     void recaulculateAmount();
 
